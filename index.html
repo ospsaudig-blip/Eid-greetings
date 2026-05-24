@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مهنئ الاستدامة - بطاقات تهنئة عيد الأضحى المبارك | OSP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajwal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Primary Colors from Brand Book */
+            --color-livid: #176B8E;
+            --color-teal: #008996;
+            --color-bright-blue: #00A9E2;
+            --color-deep-blue: #0A1F8F;
+            
+            /* Secondary Colors from Brand Book */
+            --color-vivid-yellow: #FFC429;
+            --color-vivid-green: #00CD7D;
+            --color-light-gray: #D9D8D6;
+            
+            /* UI Background and Gradients */
+            --bg-gradient: linear-gradient(135deg, #0A1F8F 0%, #176B8E 50%, #008996 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajwal', sans-serif;
+        }
+
+        body {
+            background: #f4f7f6;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .logo-container svg {
+            width: 160px;
+            height: auto;
+            display: block;
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-deep-blue);
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        /* Control Panel Styles */
+        .control-panel {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-deep-blue);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--color-teal);
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            border: 2px solid var(--color-light-gray);
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            color: var(--color-deep-blue);
+            font-weight: 500;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--color-teal);
+            box-shadow: 0 0 0 4px rgba(0, 137, 150, 0.15);
+        }
+
+        /* Template Grid Selector */
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .template-option {
+            border: 3px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1 / 1.5;
+            background: #eee;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .template-option:hover {
+            transform: translateY(-3px);
+        }
+
+        .template-option.active {
+            border-color: var(--color-vivid-yellow);
+            box-shadow: 0 5px 15px rgba(255, 196, 41, 0.4);
+        }
+
+        .template-preview-thumb {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* Template Palette Badges */
+        #thumb-1 { background: linear-gradient(180deg, #176B8E 0%, #008996 100%); }
+        #thumb-2 { background: linear-gradient(180deg, #0A1F8F 0%, #176B8E 100%); }
+        #thumb-3 { background: linear-gradient(180deg, #008996 0%, #00CD7D 100%); }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--color-deep-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #06135c;
+            box-shadow: 0 5px 15px rgba(10, 31, 143, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--color-teal);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #006b75;
+            box-shadow: 0 5px 15px rgba(0, 137, 150, 0.3);
+        }
+
+        /* Live Preview Panel */
+        .preview-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .canvas-container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border: 8px solid white;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .preview-hint {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px 20px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 1000 700" style="enable-background:new 0 0 1000 700;" xml:space="preserve">
+            <g>
+                <path style="fill:#0A1F8F;" d="M245.2,192.3c48,0,85.1,13.7,111.4,41.1c26.3,27.4,39.4,65.7,39.4,115c0,49.1-13.1,87.4-39.4,114.8c-26.3,27.4-63.4,41.1-111.4,41.1c-47.7,0-84.8-13.7-111.2-41.1c-26.4-27.4-39.6-65.7-39.6-114.8c0-49.3,13.2-87.6,39.6-115C160.4,206,197.5,192.3,245.2,192.3z M245.2,249.2c-29.3,0-51.4,9.1-66.2,27.3c-14.8,18.2-22.2,45.5-22.2,81.9c0,36.2,7.4,63.5,22.2,81.8c14.8,18.3,36.9,27.4,66.2,27.4c29.5,0,51.6-9.1,66.4-27.4c14.8-18.3,22.2-45.6,22.2-81.8c0-36.4-7.4-63.7-22.2-81.9C296.8,258.3,274.7,249.2,245.2,249.2z"/>
+                <path style="fill:#0A1F8F;" d="M476,432.1l23.4-44.1c16.2,12.7,34.9,19.1,56,19.1c25.4,0,38.1-9.3,38.1-27.9c0-8.6-4.1-15.1-12.2-19.4c-8.1-4.3-22.9-9-44.5-14.1c-28-6.6-48.4-15.8-61.3-27.7c-12.9-11.9-19.3-28.5-19.3-49.8c0-23.9,9.4-42.6,28.2-56.1s44.6-20.2,77.5-20.2c26.6,0,51.2,5.6,73.8,16.8l-20.5,45.3c-18.9-10-36.8-15-53.6-15c-12.3,0-21.7,2.5-28.2,7.5c-6.5,5-9.7,11.8-9.7,20.3c0,8.2,4.3,14.6,12.9,19.1c8.6,4.5,23.8,9.2,45.6,14c28,6.2,48.5,15.1,61.4,26.7c12.9,11.6,19.3,28.1,19.3,49.5c0,25.4-9.6,45.2-28.8,59.3s-46.6,21.2-82.1,21.2C519.8,454.4,495.2,447,476,432.1z"/>
+                <path style="fill:#0A1F8F;" d="M685.1,196.2h101.4c30.1,0,53.2,7.1,69.2,21.2c16,14.1,24.1,34.5,24.1,61.1c0,26.8-8,47.2-23.9,61.3c-15.9,14.1-39.2,21.2-69.8,21.2H742v90.4h-56.9V196.2z M742,314.1h40.4c14.6,0,25.5-3.1,32.7-9.3c7.2-6.2,10.8-15.2,10.8-27.1c0-11.7-3.6-20.5-10.8-26.4c-7.2-5.9-18-8.9-32.4-8.9H742V314.1z"/>
+                
+                <path style="fill:#0A1F8F;" d="M110.1,580.4v-8.4c1.1-2.9,3.5-4.3,7.2-4.3c4,0,6.5,1.4,7.4,4.3v8.4H110.1z M124.6,547.4v8.4H81.2v-8.4H124.6z M193.3,535v20.8h-46.1V535H137v29.2h56.3V535H193.3z M161.4,524v-6.3c1-2.1,2.6-3.2,5.1-3.2s4.1,1.1,4.9,3.2V524H161.4z M174.5,524v-6.3c1-2.1,2.6-3.2,5.1-3.2s4.1,1.1,4.9,3.2V524H174.5z M253.1,515.6v8.4h-48.4v19.4h48.4v8.4h-58.6v-36.2H253.1z M316.5,515.6v8.4h-24.1v40.2h-10.2v-40.2h-24.1v-8.4H316.5z M375.3,515.6c4,0,6.9,0.9,8.7,2.7s2.7,4.8,2.7,9c0,5-1.1,8.6-3.4,10.8c-2.3,2.2-5.8,3.3-10.6,3.3h-25.1v22.8H337v-48.6H375.3z M347.3,534.1h24c5.1,0,7.6-2.5,7.6-7.5c0-4.8-2.5-7.2-7.6-7.2h-24V534.1z M438.4,515.6v8.4H415v19.4h22.6v8.4H415v20.4h30.2v-11.4h-10.8v-8.4h21v28.2h-50.6v-65H438.4z M504.6,515.6v8.4h-42.3v13.5h39.7v8.4h-39.7v19.8h44v8.4h-54.2v-65H504.6z M526.4,515.6h10.2v64.6h-10.2V515.6z M598.6,515.6v8.4h-24.1v40.2h-10.2v-40.2h-24.1v-8.4H598.6z M654,551.9v12.7h-10.2v-12.7H608v-36.2h10.2v27.8h25.6v-27.8H654V551.9z M671.3,515.6h10.2v43.2l31.5-43.2h12.5l-26.6,35.5l28,29.1h-13.1l-22.3-23.7l-10.2,13.3v10.4h-10.2V515.6z"/>
+                
+                <path style="fill:#0A1F8F;" d="M81.2,634.3h8.3v30.7h-8.3V634.3z M100.1,643.5h7.9v4.2c2.1-3.2,5.1-4.8,9.2-4.8c4.3,0,7.6,1.4,9.8,4.1c2.2,2.7,3.3,6.8,3.3,12.2v15.8h-8.1v-14.8c0-5-2-7.5-6.1-7.5c-4.1,0-6.1,2.5-6.1,7.5v14.8h-8.1V643.5z M141.2,643.5h7.9v4.2c2.1-3.2,5.1-4.8,9.2-4.8c4.3,0,7.6,1.4,9.8,4.1c2.2,2.7,3.3,6.8,3.3,12.2v15.8h-8.1v-14.8c0-5-2-7.5-6.1-7.5c-4.1,0-6.1,2.5-6.1,7.5v14.8h-8.1V643.5z M211.5,642.9c5.3,0,9.5,1.8,12.5,5.3c3,3.5,4.5,8.4,4.5,14.6c0,6.2-1.5,11.1-4.5,14.6c-3,3.5-7.2,5.3-12.5,5.3c-5.4,0-9.6-1.8-12.6-5.3c-3-3.5-4.5-8.4-4.5-14.6c0-6.2,1.5-11.1,4.5-14.6C198.3,644.7,202.5,642.9,211.5,642.9z M211.5,649.6c-3,0-5.2,1.1-6.6,3.3c-1.4,2.2-2.1,5.5-2.1,9.9c0,4.4,0.7,7.7,2.1,9.9c1.4,2.2,3.6,3.3,6.6,3.3c2.9,0,5.1-1.1,6.5-3.3c1.4-2.2,2.1-5.5,2.1-9.9c0-4.4-0.7-7.7-2.1-9.9C218.1,650.7,215.9,649.6,211.5,649.6z M235.3,643.5h8.6l7.1,21.1l7.1-21.1h8.6l-11.8,31.5h-7.8L235.3,643.5z M275.1,643.5h7.9v4c2.5-3.1,5.7-4.6,9.5-4.6c4,0,7.1,1.3,9.2,3.8c2.1,2.5,3.1,6.3,3.1,11.4v16.9h-8.1v-15.5c0-4.7-1.8-7.1-5.5-7.1c-3.8,0-5.7,2.4-5.7,7.1v15.5h-8.1V643.5z M330.4,643.5H338v4.2c2-3.1,5.1-4.7,9.3-4.7c3.4,0,6.1,1.1,8.1,3.2c2,2.1,3,5.4,3,9.8v19h-8v-17.6c0-3.9-1.6-5.8-4.7-5.8c-3.2,0-4.8,1.9-4.8,5.8v17.6h-8.1V643.5z M375.2,642.9c4.3,0,7.7,1.3,10.2,4c2.5,2.7,3.8,6.6,3.8,11.7v2.2h-21.9c0.2,3.3,1,5.8,2.4,7.4c1.4,1.6,3.4,2.4,6.1,2.4c3.3,0,6.1-1.1,8.4-3.2l3.8,4.7c-3.3,3.4-7.4,5.1-12.4,5.1c-5.2,0-9.2-1.7-12.2-5.2c-2.9-3.5-4.4-8.3-4.4-14.6c0-6.1,1.4-11,4.3-14.5C366.1,644.7,370.2,642.9,375.2,642.9z M375.2,649.3c-2.5,0-4.4,0.8-5.7,2.4c-1.3,1.6-2,3.9-2.1,6.9h14.1v-1c0-2.8-0.6-5-1.9-6.5C378.4,650.1,377,649.3,375.2,649.3z M412.3,635.4h8.1v7.6c1.9-2.6,4.5-3.9,7.7-3.9c3.2,0,5.7,1,7.5,3.1c1.8,2.1,2.7,5.1,2.7,9v13.9h-8.1V652c0-3.6-1.5-5.4-4.5-5.4c-3.1,0-4.7,1.8-4.7,5.4v13.1h-8.1V635.4z M465.1,664.2c1.9,0.9,4,1.4,6.2,1.4c3.3,0,4.9-1.1,4.9-3.2c0-1.2-0.5-2.2-1.6-2.9c-1.1-0.7-3.1-1.5-6-2.4c-4.1-1.2-7.1-2.7-8.9-4.4c-1.8-1.7-2.7-4.1-2.7-7.2c0-3.5,1.4-6.3,4.2-8.3c2.8-2,6.5-3.1,11-3.1c3.4,0,6.6,0.6,9.5,1.9l-2.4,5.7c-2.3-1.1-4.7-1.6-7-1.6c-2.8,0-4.2,0.9-4.2,2.7c0,1,0.5,1.8,1.5,2.4c1,0.6,2.9,1.3,5.7,2.2c4.2,1.3,7.2,2.8,9.1,4.6c1.9,1.8,2.8,4.2,2.8,7.4c0,3.8-1.4,6.7-4.3,8.9s-6.9,3.2-11.9,3.2c-4,0-7.7-0.7-11-2.2L465.1,664.2z M502.4,643.5h5.4v-8.1h8.1v8.1h7.8v6.1h-7.8v16.4c0,2.9,1.1,4.3,3.3,4.3c1.6,0,3.1-0.4,4.5-1.1v6.1c-2.2,1-4.7,1.5-7.3,1.5c-3.2,0-5.7-0.9-7.3-2.8c-1.6-1.9-2.4-4.8-2.4-8.8v-15.6h-5.4V643.5z M530.1,657.6c0-5,1.2-8.8,3.6-11.4c2.4-2.6,5.7-3.9,9.9-3.9c3.6,0,6.5,1,8.6,3.1v-10h8.1v30.7H553v-3.7c-2.1,2.7-5,4.1-8.7,4.1c-4.2,0-7.5-1.3-9.9-3.9C531.3,666.2,530.1,662.5,530.1,657.6z M538.3,657.7c0,3.3,0.6,5.8,1.9,7.4c1.3,1.6,3,2.4,5.2,2.4c2.5,0,4.4-1.1,5.6-3.3v-13c-1.2-2.2-3.1-3.3-5.6-3.3c-2.2,0-3.9,0.8-5.2,2.4C538.9,651.9,538.3,654.4,538.3,657.7z M565.4,643.5h7.9v4.2c2.1-3.2,5.1-4.8,9.2-4.8c4.3,0,7.6,1.4,9.8,4.1c2.2,2.7,3.3,6.8,3.3,12.2v15.8h-8.1v-14.8c0-5-2-7.5-6.1-7.5c-4.1,0-6.1,2.5-6.1,7.5v14.8h-8.1V643.5z M606.5,643.5h7.9v4c2.5-3.1,5.7-4.6,9.5-4.6c4,0,7.1,1.3,9.2,3.8c2.1,2.5,3.1,6.3,3.1,11.4v16.9H628v-15.5c0-4.7-1.8-7.1-5.5-7.1c-3.8,0-5.7,2.4-5.7,7.1v15.5h-8.1V643.5z M661.8,643.5H669v4.2c2-3.1,5.1-4.7,9.3-4.7c3.4,0,6.1,1.1,8.1,3.2c2,2.1,3,5.4,3,9.8v19h-8v-17.6c0-3.9-1.6-5.8-4.7-5.8c-3.2,0-4.8,1.9-4.8,5.8v17.6h-8.1V643.5z M706.6,642.9c4.3,0,7.7,1.3,10.2,4c2.5,2.7,3.8,6.6,3.8,11.7v2.2H698.7c0.2,3.3,1,5.8,2.4,7.4c1.4,1.6,3.4,2.4,6.1,2.4c3.3,0,6.1-1.1,8.4-3.2l3.8,4.7c-3.3,3.4-7.4,5.1-12.4,5.1c-5.2,0-9.2-1.7-12.2-5.2c-2.9-3.5-4.4-8.3-4.4-14.6c0-6.1,1.4-11,4.3-14.5C697.5,644.7,701.6,642.9,706.6,642.9z M706.6,649.3c-2.5,0-4.4,0.8-5.7,2.4c-1.3,1.6-2,3.9-2.1,6.9h14.1v-1c0-2.8-0.6-5-1.9-6.5C709.8,650.1,708.4,649.3,706.6,649.3z M735.2,643.5h8.1v30.7h-8.1V643.5z M750.3,643.5h8.1v30.7h-8.1V643.5z M764.5,643.5h8.6l7.1,21.1l7.1-21.1h8.6l-11.8,31.5h-7.8L764.5,643.5z M811.2,657.6c0-5,1.2-8.8,3.6-11.4c2.4-2.6,5.7-3.9,9.9-3.9c3.6,0,6.5,1,8.6,3.1v-10h8.1v30.7H834v-3.7c-2.1,2.7-5,4.1-8.7,4.1c-4.2,0-7.5-1.3-9.9-3.9C812.4,666.2,811.2,662.5,811.2,657.6z M819.4,657.7c0,3.3,0.6,5.8,1.9,7.4c1.3,1.6,3,2.4,5.2,2.4c2.5,0,4.4-1.1,5.6-3.3v-13c-1.2-2.2-3.1-3.3-5.6-3.3c-2.2,0-3.9,0.8-5.2,2.4C820,651.9,819.4,654.4,819.4,657.7z"/>
+                
+                <path style="fill:#00CD7D;" d="M822.4,244.5c-42.3-46.7-101.4-111.4-101.4-111.4s-13.8,14.6-31.5,33.5c-44,47-75.3,95.5-75.3,151.7c0,61.4,32.3,115.5,86,138.8c12.2,5.3,25.4,8.2,39.3,8.2c27.1,0,52.8-11.1,72.9-30.8c34.3-33.5,43.2-86.4,24.1-131C832.7,295.4,829,273.1,822.4,244.5z M818.5,394.8c-18,17.7-41.1,27.7-65.5,27.7c-12.5,0-24.4-2.6-35.4-7.4c-48.4-21-77.5-69.8-77.5-125.1c0-50.6,28.2-94.2,67.8-136.5c15.9-17,28.4-30.2,28.4-30.2s53.2,58.3,91.3,100.3c6,25.8,9.3,45.8,3.7,69.5C837.2,335.7,829.2,383.3,818.5,394.8z"/>
+                <path style="fill:#008996;" d="M836.5,257c-42.3-46.7-101.4-111.4-101.4-111.4s-13.8,14.6-31.5,33.5c-44,47-75.3,95.5-75.3,151.7c0,61.4,32.3,115.5,86,138.8c12.2,5.3,25.4,8.2,39.3,8.2c27.1,0,52.8-11.1,72.9-30.8c34.3-33.5,43.2-86.4,24.1-131C846.8,307.9,843.1,285.6,836.5,257z M832.6,407.3c-18,17.7-41.1,27.7-65.5,27.7c-12.5,0-24.4-2.6-35.4-7.4c-48.4-21-77.5-69.8-77.5-125.1c0-50.6,28.2-94.2,67.8-136.5c15.9-17,28.4-30.2,28.4-30.2s53.2,58.3,91.3,100.3c6,25.8,9.3,45.8,3.7,69.5C851.3,348.2,843.3,395.8,832.6,407.3z"/>
+                <path style="fill:#0A1F8F;" d="M814.1,283c-37.3-41.2-89.5-98.3-89.5-98.3s-12.2,12.9-27.8,29.6c-38.8,41.5-66.4,84.3-66.4,133.9c0,54.2,28.5,101.9,75.9,122.5c10.8,4.7,22.4,7.2,34.7,7.2c23.9,0,46.6-9.8,64.3-27.2c30.3-29.6,38.1-76.2,21.3-115.6C823.2,325.7,819.9,306,814.1,283z M810.7,415.5c-15.9,15.6-36.3,24.4-57.8,24.4c-11.1,0-21.5-2.3-31.2-6.5c-42.7-18.5-68.4-61.6-68.4-110.4c0-44.6,24.9-83.1,59.8-120.4c14-15,25-26.6,25-26.6s46.9,51.4,80.5,88.5c5.3,22.7,8.2,40.4,3.3,61.3C827.2,363.3,820.1,405.3,810.7,415.5z"/>
+                
+                <path style="fill:#0A1F8F;" d="M748.2,316.4c1.1-0.2,2.2-0.5,3.3-0.9c2.3-0.8,4.5-2.2,6.5-4c2.5-2.2,4.6-5.1,6-8.5c0.7-1.7,1.2-3.6,1.4-5.6l0.2-1.9l-1.8,0.7c-3.1,1.2-6.5,1.7-9.9,1.4c-3-0.3-5.9-1.2-8.6-2.7c-2-1.1-3.8-2.6-5.3-4.3l-1.3-1.5l-0.2,2c-0.3,3.3-1.3,6.5-3,9.4c-1.5,2.5-3.6,4.6-6.1,6.2c-2.3,1.5-4.9,2.5-7.6,2.9l-1.9,0.3l1.7,0.9c3.1,1.6,6.6,2.4,10.1,2.3c3.1-0.1,6.2-0.8,9-2.1c1.2-0.6,2.4-1.3,3.5-2.1c0.1,1.5,0.3,3.1,0.6,4.6c0.8,4.3,2.4,8.4,4.7,12.1c2,3.3,4.6,6.1,7.6,8.4l1.6,1.2l-0.5-1.9c-0.8-3.2-1-6.5-0.6-9.8c0.4-3,1.3-5.9,2.7-8.6c0.5-1,1.1-2,1.8-2.9C749.6,315.3,748.9,315.9,748.2,316.4z"/>
+                <path style="fill:#0A1F8F;" d="M764.5,350.2c-7.2-2.2-14.7-3.3-22.3-3.3c-7.6,0-15.1,1.1-22.3,3.3c-2.4,0.7-4.2,2-4.2,3.6c0,1.9,2.6,3.3,5.8,3.3c5.1,0,10.2-1.1,15.1-3.2c1.8-0.8,3.7-1.2,5.6-1.2c1.9,0,3.8,0.4,5.6,1.2c4.9,2.1,10,3.2,15.1,3.2c3.2,0,5.8-1.4,5.8-3.3C768.7,352.2,766.9,350.9,764.5,350.2z"/>
+                <path style="fill:#0A1F8F;" d="M756.8,361.4c-4.7-1.3-9.6-2-14.6-2c-5,0-9.9,0.7-14.6,2c-2.1,0.6-3.4,1.6-3.4,2.7c0,1.4,2,2.4,4.5,2.4c3.8,0,7.6-0.8,11.1-2.4c0.8-0.4,1.6-0.6,2.4-0.6c0.8,0,1.6,0.2,2.4,0.6c3.5,1.6,7.3,2.4,11.1,2.4c2.5,0,4.5-1,4.5-2.4C760.2,363,758.9,362,756.8,361.4z"/>
+            </g>
+            </svg>
+        </div>
+        <div class="header-title">منصة تهاني عـيد الأضحى المبارك</div>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="control-panel">
+            <h2 class="section-title">صمم بطاقتك الخاصة</h2>
+            
+            <div class="form-group">
+                <label for="userName">الاسم الكريم:</label>
+                <input type="text" id="userName" placeholder="اكتب اسمك ليظهر على البطاقة..." value="محمد بن ثامر الطيار" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label>اختر القالب المفضل من هويتنا:</label>
+                <div class="template-grid">
+                    <div class="template-option active" data-template="1">
+                        <div class="template-preview-thumb" id="thumb-1">
+                            <span>قالب 1</span>
+                            <span>أزرق الاستدامة</span>
+                        </div>
+                    </div>
+                    <div class="template-option" data-template="2">
+                        <div class="template-preview-thumb" id="thumb-2">
+                            <span>قالب 2</span>
+                            <span>الكحلي الداكن</span>
+                        </div>
+                    </div>
+                    <div class="template-option" data-template="3">
+                        <div class="template-preview-thumb" id="thumb-3">
+                            <span>قالب 3</span>
+                            <span>أخضر زاهي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="downloadBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    تحميل البطاقة بجودة عالية (PNG)
+                </button>
+            </div>
+        </div>
+
+        <div class="preview-panel">
+            <div class="canvas-container">
+                <canvas id="cardCanvas" width="800" height="1200"></canvas>
+            </div>
+            <p class="preview-hint">معاينة مباشرة حية تطابق نسق الملصق الرسمي</p>
+        </div>
+        
+    </div>
+
+    <footer>
+        <p>© ٢٠٢٦ برنامج استدامة الطلب على البترول (OSP). جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('cardCanvas');
+        const ctx = canvas.getContext('2d');
+        const nameInput = document.getElementById('userName');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const templateOptions = document.querySelectorAll('.template-option');
+
+        let currentTemplate = "1";
+
+        // Structured Layout Positioning Constants matching exactly the reference poster structural guidelines
+        const designConfig = {
+            width: 800,
+            height: 1200,
+            fonts: {
+                title: "bold 44px 'Tajwal', sans-serif",
+                subtitle: "500 24px 'Tajwal', sans-serif",
+                closing: "bold 26px 'Tajwal', sans-serif",
+                name: "bold 28px 'Tajwal', sans-serif",
+                role: "500 20px 'Tajwal', sans-serif"
+            }
+        };
+
+        // Initialize and Bind Control Handlers
+        window.addEventListener('load', () => {
+            drawCard();
+            
+            nameInput.addEventListener('input', drawCard);
+            
+            templateOptions.forEach(opt => {
+                opt.addEventListener('click', (e) => {
+                    templateOptions.forEach(o => o.classList.remove('active'));
+                    const target = e.currentTarget;
+                    target.classList.add('active');
+                    currentTemplate = target.getAttribute('data-template');
+                    drawCard();
+                });
+            });
+
+            downloadBtn.addEventListener('click', downloadCard);
+        });
+
+        // Main Rendering Orchestration Pipeline
+        function drawCard() {
+            // Clear space
+            ctx.clearRect(0, 0, designConfig.width, designConfig.height);
+
+            // 1. Draw Base Structural Cards Background (Proportional to reference poster header/footer split design)
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, designConfig.width, designConfig.height);
+
+            // 2. Render Gradient Header Top Panel Area
+            let headerGradient = ctx.createLinearGradient(0, 0, designConfig.width, 400);
+            if (currentTemplate === "1") {
+                headerGradient.addColorStop(0, '#176B8E'); // Livid
+                headerGradient.addColorStop(1, '#008996'); // Teal
+            } else if (currentTemplate === "2") {
+                headerGradient.addColorStop(0, '#0A1F8F'); // Deep Blue
+                headerGradient.addColorStop(1, '#176B8E'); // Livid
+            } else {
+                headerGradient.addColorStop(0, '#008996'); // Teal
+                headerGradient.addColorStop(1, '#00CD7D'); // Vivid Green
+            }
+            ctx.fillStyle = headerGradient;
+            ctx.fillRect(0, 0, designConfig.width, 400);
+
+            // 3. Render Bottom Header Corporate Footer Panel
+            let footerGradient = ctx.createLinearGradient(0, 1050, designConfig.width, designConfig.height);
+            if (currentTemplate === "1" || currentTemplate === "2") {
+                footerGradient.addColorStop(0, '#0A1F8F');
+                footerGradient.addColorStop(1, '#008996');
+            } else {
+                footerGradient.addColorStop(0, '#008996');
+                footerGradient.addColorStop(1, '#00CD7D');
+            }
+            ctx.fillStyle = footerGradient;
+            ctx.fillRect(0, 1050, designConfig.width, 150);
+
+            // 4. Render Main Typography (Eid Al-Adha Context translated to match aesthetic tone of reference)
+            ctx.textAlign = "right";
+            ctx.textBaseline = "middle";
+            
+            // Primary Hero Heading
+            ctx.fillStyle = "#ffffff";
+            ctx.font = designConfig.fonts.title;
+            ctx.fillText("يسعدنا تواصلكم تهنئتكم!", 730, 130);
+
+            // Sub-context Text
+            ctx.font = designConfig.fonts.subtitle;
+            ctx.fillText("نهنئ أنفسنا عائلة برنامج استدامة الطلب على البترول بحلول عيد الأضحى المبارك،", 730, 220);
+            ctx.fillText("نتمنى لكم أياماً حافلة بالمسرات والنجاح والتميز المستدام.", 730, 270);
+
+            // 5. Build Dynamic Grid Array Configuration mimicking exactly the user frame placements inside the poster layout
+            const userMatrix = [
+                {x: 600, y: 580}, {x: 400, y: 580}, {x: 200, y: 580},
+                {x: 600, y: 880}, {x: 400, y: 880}, {x: 200, y: 880}
+            ];
+
+            // Render Each Grid Component Block matching typography hierarchy & dynamic OSP drop border
+            userMatrix.forEach((pos) => {
+                drawUserAssetFrame(pos.x, pos.y, nameInput.value || "اسم المهنئ هنا");
+            });
+
+            // 6. Technical Brand Placement: Render Modern Technical Minimal Social Handles inside Footer Panel Space
+            ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
+            ctx.font = "bold 18px 'Tajwal', sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText("OSP_Saudi  |  OSPSaudi", designConfig.width / 2, 1125);
+        }
+
+        /**
+         * Specialized Custom Native Canvas Arc Renderer that constructs the distinctive 
+         * organic shape vector frame from the official logo asset for name frames.
+         */
+        function drawUserAssetFrame(x, y, rawNameString) {
+            ctx.save();
+            
+            // Base configuration variables
+            const scaleFactor = 0.5; 
+            
+            // Set Color Schemes dynamically according to chosen brand palette template
+            let coreBrandColor = '#0A1F8F'; // Deep Blue
+            let secondaryBrandColor = '#00CD7D'; // Vivid Green
+            let lightBorderColor = '#008996'; // Teal
+            
+            if (currentTemplate === "2") {
+                secondaryBrandColor = '#FFC429'; // Vivid Yellow
+                lightBorderColor = '#176B8E';
+            } else if (currentTemplate === "3") {
+                coreBrandColor = '#008996';
+                secondaryBrandColor = '#FFC429';
+            }
+
+            // --- Draw the exact Dynamic Outer Organic Frame Drop Shape via Vector Beziers ---
+            ctx.translate(x, y - 60);
+            ctx.scale(scaleFactor, scaleFactor);
+            
+            // Mathematical Offset Center adjustment to map local context coordinates natively
+            ctx.translate(-730, -280); 
+
+            // Back Drop Base Shadow
+            ctx.shadowColor = 'rgba(0, 89, 150, 0.15)';
+            ctx.shadowBlur = 30;
+
+            // Outer Drop Arc Path Vector Loop
+            ctx.beginPath();
+            ctx.moveTo(822.4, 244.5);
+            ctx.bezierCurveTo(780.1, 197.8, 721.0, 133.1, 721.0, 133.1);
+            ctx.敵 = 0; // Padding safeguard
+            ctx.bezierCurveTo(707.2, 147.7, 689.5, 166.6, 689.5, 166.6);
+            ctx.bezierCurveTo(645.5, 213.6, 614.2, 262.1, 614.2, 318.3);
+            ctx.bezierCurveTo(614.2, 379.7, 646.5, 433.8, 700.2, 457.1);
+            ctx.bezierCurveTo(712.4, 462.4, 725.6, 465.3, 739.5, 465.3);
+            ctx.bezierCurveTo(766.6, 465.3, 792.3, 454.2, 812.4, 434.5);
+            ctx.bezierCurveTo(846.7, 401.0, 855.6, 348.1, 836.5, 303.5);
+            ctx.bezierCurveTo(832.7, 295.4, 829.0, 273.1, 822.4, 244.5);
+            ctx.closePath();
+            ctx.fillStyle = secondaryBrandColor;
+            ctx.fill();
+
+            // Inner Offset Accent Vector Loop
+            ctx.beginPath();
+            ctx.moveTo(814.1, 283.0);
+            ctx.bezierCurveTo(776.8, 241.8, 724.6, 184.7, 724.6, 184.7);
+            ctx.bezierCurveTo(712.4, 197.6, 696.8, 214.3, 696.8, 214.3);
+            ctx.bezierCurveTo(658.0, 255.8, 630.4, 300.1, 630.4, 349.7);
+            ctx.bezierCurveTo(630.4, 403.9, 658.9, 451.6, 706.3, 472.2);
+            ctx.bezierCurveTo(717.1, 476.9, 728.7, 479.4, 741.0, 479.4);
+            ctx.bezierCurveTo(764.9, 479.4, 787.6, 469.6, 805.3, 452.2);
+            ctx.bezierCurveTo(835.6, 422.6, 843.4, 376.0, 826.6, 336.6);
+            ctx.bezierCurveTo(823.2, 325.7, 819.9, 306.0, 814.1, 283.0);
+            ctx.closePath();
+            ctx.fillStyle = coreBrandColor;
+            ctx.fill();
+
+            // Fill Core Drop Space with Solid Clean Light Gray as temporary placeholder avatar matching reference image template 
+            ctx.beginPath();
+            ctx.arc(735, 340, 95, 0, Math.PI * 2);
+            ctx.fillStyle = '#EAEAEA';
+            ctx.fill();
+            
+            // Stylized graphic abstract icon placeholder indicating user name focus
+            ctx.beginPath();
+            ctx.arc(735, 320, 35, 0, Math.PI * 2);
+            ctx.fillStyle = '#C1C1C1';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(735, 400, 60, Math.PI, 0);
+            ctx.fillStyle = '#C1C1C1';
+            ctx.fill();
+
+            ctx.restore();
+
+            // --- 7. Typography Layout Rendering (Centered relative to the grid point position) ---
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+
+            // Draw Rectangular Visual Anchor Badge Accent Bar (Mirrors the little blue square on poster)
+            ctx.fillStyle = lightBorderColor;
+            ctx.fillRect(x + 75, y + 43, 10, 30);
+
+            // User Dynamic Input Name Text 
+            ctx.fillStyle = coreBrandColor;
+            ctx.font = designConfig.fonts.name;
+            ctx.fillText(rawNameString, x - 10, y + 40);
+
+            // Fixed Professional Corporate Context Secondary Title Tag
+            ctx.fillStyle = "#666666";
+            ctx.font = designConfig.fonts.role;
+            ctx.fillText("عضو عائلة OSP كفاحاً وتميزاً", x, y + 80);
+        }
+
+        // Action Trigger: Seamless File Download Download
+        function downloadCard() {
+            // Force maximum quality state computation 
+            const dataUrl = canvas.toDataURL('image/png', 1.0);
+            const downloadLink = document.createElement('a');
+            
+            // Sanitize file naming system
+            const profileName = nameInput.value.trim().replace(/\s+/g, '_');
+            downloadLink.download = `OSP_Eid_Greeting_${profileName || 'Card'}.png`;
+            downloadLink.href = dataUrl;
+            
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+    </script>
+</body>
+</html>
